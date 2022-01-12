@@ -6,7 +6,7 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 10:24:05 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/12 15:03:02 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/12 15:16:22 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,6 @@ int   main(void)
 		ft_putnbr(i);
 		ft_putchar('\n');
 	}
+	system("leaks a.out");
 	return (0);
 }

@@ -6,13 +6,13 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:51:16 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/12 11:58:57 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/12 15:57:18 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static int	line_output(char **lines_read, char **line)
+int	line_output(char **lines_read, char **line)
 {
 	int			len;
 	char		*tmp;
@@ -37,7 +37,7 @@ static int	line_output(char **lines_read, char **line)
 	return (1);
 }
 
-static int	return_value(char **lines_read, char **line, int ret, int fd)
+int	return_value(char **lines_read, char **line, int ret, int fd)
 {
 	if (ret < 0)
 		return (-1);
