@@ -6,7 +6,7 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:51:16 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/12 15:57:18 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/12 16:41:16 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	get_next_line(const int fd, char **line)
 	int			ret;
 	static char	*lines_read[MAX_FD + 1];
 	char		buff[BUFF_SIZE + 1];
-	char		*tmp;	
+	char		*tmp;
 
 	ret = read(fd, buff, 0) + 1;
 	if (lines_read[fd] == NULL)
