@@ -6,7 +6,7 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:07:26 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/07 14:47:32 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/12 11:59:53 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 
-# define BUFF_SIZE 100
+# define BUFF_SIZE 1
 # define MAX_FD 4096
 int	get_next_line(const int fd, char **line);
 

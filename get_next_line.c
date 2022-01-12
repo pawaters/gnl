@@ -6,7 +6,7 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:51:16 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/07 14:47:28 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/12 11:58:57 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	line_output(char **lines_read, char **line)
 {
-	int		len;
+	int			len;
 	char		*tmp;
 
 	len = 0;
@@ -49,27 +49,23 @@ static int	return_value(char **lines_read, char **line, int ret, int fd)
 
 int	get_next_line(const int fd, char **line)
 {
-	int		ret;
+	int			ret;
 	static char	*lines_read[MAX_FD + 1];
 	char		buff[BUFF_SIZE + 1];
 	char		*tmp;	
 
-	ret = read(fd, buff, BUFF_SIZE);
-	if (fd < 0 || fd > MAX_FD || line == NULL || ret < 0)
+	ret = read(fd, buff, 0) + 1;
+	if (lines_read[fd] == NULL)
+		lines_read[fd] = ft_strdup("");
+	if (fd < 0 || fd > MAX_FD || line == NULL || ret - 1 < 0)
 		return (-1);
-	while (ret > 0)
+	while (!ft_strchr(lines_read[fd], '\n') && ret != 0)
 	{
+		ret = read(fd, buff, BUFF_SIZE);
 		buff[ret] = '\0';
-		if (lines_read[fd] == NULL)
-			lines_read[fd] = ft_strdup(buff);
-		else
-		{
-			tmp = ft_strjoin(lines_read[fd], buff);
-			free(lines_read[fd]);
-			lines_read[fd] = tmp;
-		}
-		if (ft_strchr(lines_read[fd], '\n'))
-			break ;
+		tmp = ft_strjoin(lines_read[fd], buff);
+		free(lines_read[fd]);
+		lines_read[fd] = tmp;
 	}
 	return (return_value(lines_read, line, ret, fd));
 }
