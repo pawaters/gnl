@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   testmain.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/07 11:07:26 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/12 14:04:39 by pwaters          ###   ########.fr       */
+/*   Created: 2022/01/12 10:24:05 by pwaters           #+#    #+#             */
+/*   Updated: 2022/01/12 14:58:22 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
+int   main(void)
+{
+	char	*line;
+	int		return_value;
 
-# define BUFF_SIZE 8
-# define MAX_FD 4096
-
-int	get_next_line(const int fd, char **line);
-
-#endif
+	return_value = get_next_line(42, &line);
+	ft_putstr("test when fd = 42. Return value = ");
+	ft_putnbr(return_value);
+	ft_putstr("\n");
+	return (0);
+}

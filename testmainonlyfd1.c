@@ -1,29 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   testmain.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/07 11:07:26 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/12 14:04:39 by pwaters          ###   ########.fr       */
+/*   Created: 2022/01/12 10:24:05 by pwaters           #+#    #+#             */
+/*   Updated: 2022/01/12 14:49:56 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include "libft/libft.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
+int   main(void)
+{
+	char	*line;
+	int		fd1;
+	int		i;
 
-# define BUFF_SIZE 8
-# define MAX_FD 4096
-
-int	get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	fd1 = open("testemptylinefile", O_RDONLY);
+	while (i < 10)
+	{
+		get_next_line(fd1, &line);
+		printf("%s\n", line);
+		ft_strdel(&line);
+		i++;
+		ft_putstr("line number ");
+		ft_putnbr(i);
+		ft_putchar('\n');
+	}
+	return (0);
+}
