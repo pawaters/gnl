@@ -6,7 +6,7 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:51:16 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/12 16:41:16 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/13 13:21:29 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,8 @@ int	get_next_line(const int fd, char **line)
 		tmp = ft_strjoin(lines_read[fd], buff);
 		free(lines_read[fd]);
 		lines_read[fd] = tmp;
+		if (ret != BUFF_SIZE)
+			break ;
 	}
 	return (return_value(lines_read, line, ret, fd));
 }
