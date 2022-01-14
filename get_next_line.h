@@ -6,7 +6,7 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 11:07:26 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/12 16:55:15 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/14 15:15:30 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include "libft/libft.h"
-# include <stdio.h>
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/uio.h>
 
-# define BUFF_SIZE 1
-# define MAX_FD 8096
+# define BUFF_SIZE 32
+# define MAX_FD 4096
 
 int	get_next_line(const int fd, char **line);
 
