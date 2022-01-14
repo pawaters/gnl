@@ -6,7 +6,7 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 10:24:05 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/12 17:15:22 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/14 12:28:23 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,30 @@ int   main(void)
 	fd1 = open("testfile1", O_RDONLY);
 	fd2 = open("testfile2", O_RDONLY);
 	fd_empty = open("testemptyfile", O_RDONLY);
-	while (i < 10)
+	while (i < 2)
 	{
-		ft_putstr("Return Value:\n");
+		ft_putstr("\n_________________\niteration / line number: ");
+		ft_putnbr(i);
+		ft_putstr("\n_________________\n");
+		ft_putstr("Test file 1\n");
+		ft_putstr("Return Value:");
 		ft_putnbr(get_next_line(fd1, &line));
-		printf("\n%s\n", line);
+		ft_putstr("\nLine output: ");
+		printf("%s\n", line);
 		ft_strdel(&line);
-		ft_putstr("Return Value:\n");
+		ft_putstr("\nTest file 2");
+		ft_putstr("\nReturn Value:");
 		ft_putnbr(get_next_line(fd2, &line));
-		printf("\n%s\n", line);
+		ft_putstr("\nLine output: ");
+		printf("%s\n", line);
 		ft_strdel(&line);
-		ft_putstr("Return Value:\n");
-		ft_putnbr(get_next_line(-1, &line));
-		printf("\n%s\n", line);
+		ft_putstr("\nempty file");
+		ft_putstr("\nReturn Value:");
+		ft_putnbr(get_next_line(fd_empty, &line));
+		ft_putstr("\nLine output: ");
+		printf("%s\n", line);
 		ft_strdel(&line);
 		i++;
-		ft_putstr("iteration number ");
-		ft_putnbr(i);
-		ft_putchar('\n');
 	}
 	system("leaks a.out");
 	return (0);
