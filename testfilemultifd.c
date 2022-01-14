@@ -6,7 +6,7 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/12 10:24:05 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/14 12:28:23 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/14 14:28:34 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,11 @@ int   main(void)
 	char	*line;
 	int		fd1;
 	int 	fd2;
-	int		fd_empty;
 	int		i;
 
 	i = 0;
 	fd1 = open("testfile1", O_RDONLY);
 	fd2 = open("testfile2", O_RDONLY);
-	fd_empty = open("testemptyfile", O_RDONLY);
 	while (i < 2)
 	{
 		ft_putstr("\n_________________\niteration / line number: ");
@@ -41,9 +39,9 @@ int   main(void)
 		ft_putstr("\nLine output: ");
 		printf("%s\n", line);
 		ft_strdel(&line);
-		ft_putstr("\nempty file");
-		ft_putstr("\nReturn Value:");
-		ft_putnbr(get_next_line(fd_empty, &line));
+		ft_putstr("\nTest with fd = - 1000, line = NULL");
+		ft_putstr("\nReturn Value expected --> -1 :");
+		ft_putnbr(get_next_line(-1000, NULL));
 		ft_putstr("\nLine output: ");
 		printf("%s\n", line);
 		ft_strdel(&line);

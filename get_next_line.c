@@ -6,7 +6,7 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:51:16 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/14 12:50:08 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/14 14:37:56 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,12 @@ int	get_next_line(const int fd, char **line)
 	char		buff[BUFF_SIZE + 1];
 	char		*tmp;
 	
+	if (fd < 0)
+		return (-1);
 	ret = read(fd, buff, 0) + 1;
 	if (lines_read[fd] == NULL)
 		lines_read[fd] = ft_strdup("");
-	if (fd < 0 || fd > MAX_FD || line == NULL || ret - 1 < 0)
+	if ( fd > MAX_FD || line == NULL || ret - 1 < 0)
 		return (-1);
 	while (!ft_strchr(lines_read[fd], '\n') && ret >= 0)
 	{
