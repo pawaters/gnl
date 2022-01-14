@@ -6,7 +6,7 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:51:16 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/13 13:21:29 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/14 10:50:17 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,16 @@ int	return_value(char **lines_read, char **line, int ret, int fd)
 	if (ret < 0)
 		return (-1);
 	else if (ret == 0)
-		return (0);
+		{
+			if (lines_read[fd][0] == '\0')
+				return (0);
+			else
+			{	
+				*line = ft_strdup(*lines_read);
+				ft_strdel(lines_read);
+				return (1);
+			}
+		}
 	else
 		return (line_output(&lines_read[fd], line));
 }
@@ -53,15 +62,17 @@ int	get_next_line(const int fd, char **line)
 	static char	*lines_read[MAX_FD + 1];
 	char		buff[BUFF_SIZE + 1];
 	char		*tmp;
-
+	
 	ret = read(fd, buff, 0) + 1;
 	if (lines_read[fd] == NULL)
 		lines_read[fd] = ft_strdup("");
 	if (fd < 0 || fd > MAX_FD || line == NULL || ret - 1 < 0)
 		return (-1);
-	while (!ft_strchr(lines_read[fd], '\n') && ret != 0)
+	while (!ft_strchr(lines_read[fd], '\n') && ret >= 0)
 	{
 		ret = read(fd, buff, BUFF_SIZE);
+		if (ret == 0 && lines_read[fd]) 
+			break;
 		buff[ret] = '\0';
 		tmp = ft_strjoin(lines_read[fd], buff);
 		free(lines_read[fd]);
