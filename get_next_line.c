@@ -6,7 +6,7 @@
 /*   By: pwaters <pwaters@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/07 10:51:16 by pwaters           #+#    #+#             */
-/*   Updated: 2022/01/14 10:50:17 by pwaters          ###   ########.fr       */
+/*   Updated: 2022/01/14 12:50:08 by pwaters          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ int	return_value(char **lines_read, char **line, int ret, int fd)
 				return (0);
 			else
 			{	
-				*line = ft_strdup(*lines_read);
-				ft_strdel(lines_read);
+				*line = ft_strdup(lines_read[fd]);
+				ft_strdel(&lines_read[fd]);
 				return (1);
 			}
 		}
